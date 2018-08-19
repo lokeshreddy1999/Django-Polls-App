@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>This is the voting page</h1>
+<h1>Sumbit the form to vote for a choice</h1>
+{% if error_message %}<p>{{error_message}}</p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+    <input type="radio" id="choice{{forloop.counter}}" value="{{choice.id}}" name="choice"/>
+    <label for="choice{{forloop.counter}}" >{{choice.choice_text}}</label>
+    <br/>
+    {% endfor %}
+    <input type="submit" value="vote" />
+
+</form>
+
+
+<script>
+</script>
+</body>
+</html>

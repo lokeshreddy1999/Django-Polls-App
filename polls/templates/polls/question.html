@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ol>
+{% for question in question_set %}
+
+    <li><a href="{% url 'polls:details' question.id %}">{{question.question_text}}</a></li>
+    <br>
+
+{% endfor %}
+</ol>
+</body>
+</html>
